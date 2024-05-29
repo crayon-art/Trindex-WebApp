@@ -7,6 +7,9 @@ const pool = new Pool({
     database: process.env.DBDATABASE,
     password: process.env.DBPASSWORD,
     port: process.env.DBPORT,
+    ssl: {
+        rejectUnauthorized: false,  // this is insecure and should be configured properly in a production environment
+      },
 });
 
 module.exports = pool;
