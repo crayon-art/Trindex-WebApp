@@ -1,0 +1,211 @@
+body, html {
+    display:flex;
+    flex-direction: column;
+    margin: 0px;
+    padding: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    font-family: 'Trebuchet MS';
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+    "row1"
+    "row2"
+    "row3"
+    "row4"
+    "row5";
+    justify-items: center;
+    align-items: center;
+    grid-row-gap: 20px;
+  }
+
+  .intro{
+    font-style:italic;
+    font-size:15px;
+    overflow: hidden;
+  }
+
+  .headings{
+    display: flex;
+    flex-flow: row;
+    grid-area: row2;
+    height: fit-content;
+    padding-left: 10px;
+    text-decoration: none;
+    justify-self: start;
+  }
+
+  .logo{
+    height:100px;
+    width:100px;
+    padding-top: 10px;
+    padding-right: 10px;
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  .banner {
+    grid-area: row1;
+    display: flex;
+    background-color: #333;
+    overflow: hidden;
+    width:100%;
+    height: fit-content;
+    margin-bottom: 0px;
+  }
+
+  .endbanner{
+    grid-area: row5;
+  }
+
+  .nav{
+    display: flex;
+    flex-flow: row;
+    align-items: flex-start;
+    margin-left: 0;
+    padding-right: 20px;
+    height: fit-content;
+    padding-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  ul{
+    list-style-type: none;
+  }
+
+  a{
+    text-decoration: none;
+  }
+
+  .nav li a{
+    float:left;
+    color:white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+    padding: 15px;
+  }
+
+  .nav li a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .nav li a.active {
+    background-color: #04AA6D;
+    color: white;
+  }
+
+  .motto{
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
+    margin-left: 0;
+    color: black;
+  }
+
+  .motto_text{
+    font-size:20px;
+  }
+
+  h3{
+    color: white;
+  }
+
+    .endbanner{
+      justify-content: center;
+  }
+
+  footer{
+    margin-top: auto;
+  }
+
+.welcome{
+    grid-area: row3;
+    font-family: cursive;
+    font-size:30px;
+    overflow: hidden;
+}
+
+.row4{
+    width: 100%;
+    grid-area: row4;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.tnt-map{
+    height:40%;
+    width:50%;
+}
+
+
+.cafe-rec{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size:20px;
+    top:20%;
+    left:10%;
+}
+
+.cafe-rec a:link {
+    color: #2997ff;
+    background-color: transparent;
+    text-decoration: none;
+  }
+
+  .cafe-rec a:hover {
+    color:#2997ff;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+
+  .cafe-rec a:visited {
+    color: #2997ff;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  .cafe-rec a:active {
+    color: #2997ff;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+
+ul.list-type{
+    list-style-type: none;
+}
+ul.list-type>li:before{
+    content:"🍪";
+    text-indent:-5px;
+}
+
+@media  screen and (max-width: 1024px){
+    .row4{
+        align-items: center;
+        flex-direction: column;
+    }
+    .headings{
+        width: 100%;
+        display: flex;
+        flex-flow: row;
+        grid-area: row2;
+        height: fit-content;
+        padding-left: 10px;
+        text-decoration: none;
+        justify-self: start;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .motto{
+        display: none;
+    }
+}

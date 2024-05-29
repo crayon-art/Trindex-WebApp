@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel ="stylesheet" type="text/css" href="../stylesheets/idetails.css">
+    <script src="../item-details.js"></script>
+    <title>#{name}</title>
+</head>
+<body>
+    <div class="container">
+        <a class="headings" href="/">
+            <img  class="logo" alt="Company_logo" src="https://i.ibb.co/kQvcfYQ/368048969-1125430278423439-8973149769456269853-n.jpg">
+            <div class="motto">
+                <h1 class="motto_text"> Trindex - Wey we going next?</h1>
+                <h2 class="intro">Your online index for entertainment in Trinidad and Tobago</h2>
+            </div>
+        </a>
+
+        <div class="banner">
+            <ul class = nav>
+            <li><a href="/">Home</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+            <li><a href="/about.html">About</a></li>
+            </ul>
+        </div>
+
+        <h2 class="welcome" id="name"> #{name} </h2>
+        <div id="imgBox">
+            <img id="img" src="#{image}" alt="picture of the current resource">
+        </div>
+        <button id="visitSite">Visit</button>
+        <div id ="popularity">Popularity Score: </div>
+        <div id="rate">
+            <button id="thumbsup">👍🏽</button>
+            <button id="thumbsdown">👎🏽</button>
+        </div>
+        <div id="addComment">
+            <p id="commentLabel">Comment: </p>
+            <input type ="text" id="commentBox" placeholder="Add a comment..."/>
+            <button id=addCommentBtn>Submit</button>
+        </div>
+        <div id ="allComments">
+            <button id="commentsTitle">Comments (0)</button>
+        </div>
+
+
+    </div>
+</body>
+<footer id ="footer">
+    <div class="banner endbanner">
+        <h3>©️ Trindex</h2>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+        <head>
+            <link rel="stylesheet" type="text/css" href="../stylesheets/contact.css">
+            <title>Contact</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        </head>
+        <body>
+            <div class="container">
+
+                <a class="headings" href="/">
+                    <img  class="logo" alt="Company_logo" src="https://i.ibb.co/kQvcfYQ/368048969-1125430278423439-8973149769456269853-n.jpg">
+                    <div class="motto">
+                        <h1 class="motto_text"> Trindex - Wey we going next?</h1>
+                        <h2 class="intro">Your online index for entertainment in Trinidad and Tobago</h2>
+                    </div>
+                </a>
+
+                <div class="banner">
+                    <ul class = nav>
+                    <li><a class="/" href="/">Home</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+
+                <h2 class="contact"> Please enter any questions/feedback you may have</h2>
+
+
+                <div class="form-container">
+                    <form id="questions" action="/submit-form" method="POST">
+                        <fieldset id="box">
+                        <legend>Questions/Feedback</legend>
+
+                        <div id="fname">
+                            <label for="firstName">First Name:</label>
+                            <input type="text" id="firstName" name="first_name" required>
+                        </div>
+
+                        <div id="lname">
+                            <label for="lastName">Last Name:</label>
+                            <input type="text" id="lastName" name="last_name" required>
+                        </div>
+
+                        <div id="mail">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email_address" required>
+                        </div>
+
+                        <div id="comment">
+                            <label for="comments">Comments</label></br>
+                            <textarea id="comments" name="comments" required></textarea>
+                        </div>
+
+                        <div id="confirm">
+                            <div id="check1">
+                                <input type="checkbox" id="signup" name="signup" value="Signup">
+                                <div id="sign">
+                                    <label for="signup">Sign up </br>for news</label>
+                                </div>
+                            </div>
+
+                            <div id="check2">
+                                <input type="checkbox" id="terms" name="terms" value="Terms" required>
+                                <div id="term">
+                                    <label for="terms"> Agree to</br> terms</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <button type="submit" id="button">Submit</button>
+                        </div>
+
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </body>
+        <footer>
+            <div class="banner endbanner">
+                <h3>©️ Trindex</h2>
+            </div>
+        </footer>
+</html>
