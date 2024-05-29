@@ -2,6 +2,9 @@
 window.addEventListener("DOMContentLoaded", async()=>{
     try{
 //variables
+        //set variable to regulate voting
+        let vote = false;
+
         //set page name for the selected entry
         const name = (document.getElementById("name")).innerText;
 
@@ -36,28 +39,10 @@ window.addEventListener("DOMContentLoaded", async()=>{
 //add listener event for clicking thumbs up and thumbs down
          const thumbsUpButton = document.getElementById("thumbsup");
          thumbsUpButton.addEventListener("click", async() => {
-                 popScore +=1;
-                 updateScore(popScore);
-// Update popularity score on the server
-             await fetch("/update-popularity", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                 },
-                 body: JSON.stringify({
-                        name:`${name}`,
-                        increment:true
-                 })
-             });
-         });
-
-         const thumbsDownButton = document.getElementById("thumbsdown");
-        thumbsDownButton.addEventListener("click", async() => {
-                if(popScore>0){
-                    popScore-=1;
-                }
+            if (!vote){
+                popScore +=1;
                 updateScore(popScore);
-// Update popularity score on the server
+                // Update popularity score on the server
                 await fetch("/update-popularity", {
                     method: "POST",
                     headers: {
@@ -65,9 +50,34 @@ window.addEventListener("DOMContentLoaded", async()=>{
                     },
                     body: JSON.stringify({
                         name:`${name}`,
-                        increment:false
+                        increment:true
                     })
                 });
+              vote = true;
+            }
+         });
+
+         const thumbsDownButton = document.getElementById("thumbsdown");
+        thumbsDownButton.addEventListener("click", async() => {
+
+                if (!vote){
+                    if(popScore>0){
+                        popScore-=1;
+                    }
+                    updateScore(popScore);
+                    // Update popularity score on the server
+                    await fetch("/update-popularity", {
+                        method: "POST",
+                        headers: {
+                        "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            name:`${name}`,
+                            increment:false
+                        })
+                    });
+                    vote = true;
+                }
         });
 
 // // add event listener for when a new comment is submitted
