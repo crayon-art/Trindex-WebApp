@@ -3,7 +3,7 @@ A place to quickly find places of interest in Trinidad and Tobago.
 Motto: Trindex! Wey we going next?
 
 #Link to hosted website
-[https://trindex.netlify.app/](https://trindex-webapp.onrender.com/)
+https://trindex-webapp.onrender.com/
 
 Picture of Trindex homepage.
 ![Trindex_home](https://github.com/crayon-art/Trindex-WebApp/assets/142947608/e06f6d8a-80c7-46a4-939b-1847be494c4f)
