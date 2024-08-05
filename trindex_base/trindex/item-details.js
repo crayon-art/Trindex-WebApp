@@ -13,7 +13,9 @@ window.addEventListener("DOMContentLoaded", async()=>{
          let popScore = await popResponse.json();
 
         const commentResponse = await fetch(`/comments/${name}`);
-        let commentsArr = await commentResponse.json();
+        let comments = await commentResponse.json();
+        let commentsArr = comments[0];
+        let date = comments[1];
 
         const visit = document.getElementById("visitSite");
 
@@ -80,6 +82,21 @@ window.addEventListener("DOMContentLoaded", async()=>{
                 }
         });
 
+        //function to format date
+        let formatDate = (date) => {
+
+                const options = {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                    hour: 'numeric',
+                    minute: 'numeric',
+                    hour12: true,
+                };
+
+                return new Intl.DateTimeFormat('en-US', options).format(date);
+            }
+
 // // add event listener for when a new comment is submitted
         const submitBtn = document.getElementById("addCommentBtn");
         submitBtn.addEventListener("click", async()=>{
@@ -87,6 +104,14 @@ window.addEventListener("DOMContentLoaded", async()=>{
 
             if (commentBox.value!==""){
                     commentsArr.push(commentBox.value);
+
+                // Get the current date and time
+                const now = new Date();
+
+                // Format the date
+                const formattedDate = formatDate(now);
+
+                date.push(formattedDate);
 
                 // Store comments on the server
                 await fetch("/add-comment", {
@@ -96,14 +121,16 @@ window.addEventListener("DOMContentLoaded", async()=>{
                         },
                         body: JSON.stringify({
                             name:`${name}`,
-                            comment: commentBox.value
+                            comment: commentBox.value,
+                            created_at: formattedDate
                         })
                 });
 
                     commentsCounterUpdate();
                     if(commentsArr.length>1&&document.getElementById("listOfComments")){
                             const temp4 = document.getElementById("listOfComments");
-                            document.body.removeChild(temp4);
+                            const addComments = document.getElementById("container");
+                            addComments.removeChild(temp4);
                     }
                     populateComments();
                     commentBox.value = "";
@@ -120,8 +147,9 @@ window.addEventListener("DOMContentLoaded", async()=>{
 // //function to populate comments
         const populateComments = () =>{
             const newdiv6 = document.createElement("div");
+            const addComments = document.getElementById("container");
             newdiv6.id = "listOfComments";
-            document.body.appendChild(newdiv6);
+            addComments.appendChild(newdiv6);
 
         const footNote = document.getElementById("footer");
         document.body.removeChild(footNote);
@@ -136,7 +164,10 @@ window.addEventListener("DOMContentLoaded", async()=>{
 
                     temp3.className = `comment comment${i+1}`;
 
-                    temp3.innerHTML = `<div>${commentsArr[i]}</div>`
+                    temp3.innerHTML = `<div id="comments">
+                                            <p id = "date">${date[i]}</p>
+                                            <p id = "commentInfo">${commentsArr[i]}</p>
+                                        </div>`;
                     const delElem = document.getElementById("listOfComments");
                     delElem.appendChild(temp3);
 
@@ -170,7 +201,8 @@ window.addEventListener("DOMContentLoaded", async()=>{
                 }
                 else {
                         delElem = document.getElementById("listOfComments");
-                        document.body.removeChild(delElem);
+                        const addComments = document.getElementById("container");
+                        addComments.removeChild(delElem);
                         commentsCounterUpdate();
                 }
         });

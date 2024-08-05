@@ -222,8 +222,9 @@ app.get("/name_url/:name", async (req, res)=>{
 //query server to fetch comments
 app.get("/comments/:name", async(req, res)=>{
     try{
-        const result = await pool.query(`SELECT id, commentsarr FROM comments WHERE name = $1`, [req.params.name])
-        const resBody = result.rows[0].commentsarr;
+        const result = await pool.query(`SELECT id, commentsarr, created_at FROM comments WHERE name = $1`, [req.params.name])
+
+        const resBody = [result.rows[0].commentsarr, result.rows[0].created_at];
         res.send(resBody);
     }catch(err){
         console.error(err);
@@ -234,7 +235,7 @@ app.get("/comments/:name", async(req, res)=>{
 
 // // Add a new comment
 app.post("/add-comment", async (req, res) => {
-    const { name, comment } = req.body;
+    const { name, comment, created_at } = req.body;
     try {
         const result = await pool.query("SELECT id FROM comments WHERE name = $1", [name]);
         if (result.rows.length === 0) {
@@ -242,6 +243,7 @@ app.post("/add-comment", async (req, res) => {
         }
         const itemId = result.rows[0].id;
         const newComment = await pool.query("UPDATE comments SET commentsarr = array_append(commentsArr, $2) WHERE id = $1", [itemId, comment]);
+        const newDate = await pool.query("UPDATE comments SET created_at = array_append(created_at, $2) WHERE id = $1", [itemId, created_at]);
         res.send("Comment added successfully");
     } catch (err) {
         console.error(err);
@@ -271,9 +273,6 @@ app.post("/submit-form", async(req, res)=>{
         console.error('Error submitting form:', error);
         res.status(500).send('Error submitting form');
    }
-
-
-
 });
 
 
